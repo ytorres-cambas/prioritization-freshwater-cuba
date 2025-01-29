@@ -4,8 +4,10 @@
 This repository contains scripts for spatial conservation prioritization of freshwater biodiversity in Cuba. The analysis uses species distribution models (SDMs) to predict the distribution of freshwater species. Predictions from these models are assessed for overlap with existing protected areas to identify conservation gaps, and are then used as features in the conservation prioritization analysis.
 
 The main objectives of this work are:
-Assess the Effectiveness of Current Protected Areas: Evaluate how well current protected areas provide protection for various freshwater species groups.
-Conservation Planning Under Post-2020 Global Biodiversity Framework: Develop solutions that align with the 30% conservation target for freshwater species, ensuring connectivity.
+
+- Assess the Effectiveness of Current Protected Areas: Evaluate how well current protected areas provide protection for various freshwater species groups.
+
+- Conservation Planning Under Post-2020 Global Biodiversity Framework: Develop solutions that align with the 30% conservation target for freshwater species, ensuring connectivity.
 
 ## Repository Structure
 The repository includes the following scripts:
