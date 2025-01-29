@@ -213,22 +213,75 @@ sf_irr_p_30_penaly_elbow <- subcatchments %>%
 st_write(sf_irr_p_30_penaly_elbow, paste0(outputpath,
                                           "irr_p_30_penaly_elbow.gpkg"))
 
-# Plot with ggplot
-ggplot() +
-  geom_sf(data = sf_irr_p_30_penaly_elbow,
-          aes(fill = irreplaceability)) +
-  scale_fill_viridis_c() +
-  theme_minimal() +
-  ggtitle("Irreplaceability of Planning Units") +
-  theme(legend.position = "bottom")
 
-# Map the final solution
-sf_s_30_penaly_elbow <- subcatchments %>%
-  inner_join(select(s_30_penaly_elbow, solution_1), by = c("id" = "id"))
+# feature representation in protected areas and the solution
+repr_30_penaly_elbow <- target_coverage(problem = p_30_penaly_elbow,
+                                        solution = s_30_penaly_elbow, 
+                                        pa_colname = "locked_in_pa")
+# Save feature representation
+write.csv(repr_30_penaly_elbow$representation, 
+          paste0(outputpath, "repr_sol_30_elbow.csv"))
 
-# Plot the final solution map
-ggplot() +
-  geom_sf(data = sf_s_30_penaly_elbow, aes(fill = solution_1)) +
-  scale_fill_manual(values = c("lightgrey", "darkgreen")) +
-  theme_minimal() +
-  ggtitle("Final Conservation Prioritization Solution")
+# 6. Problem with protected areas locked-in, 30% target, 0.05 gap, penalty = con_penal_30 (selected with the visual method)
+
+# Set the problem
+p_30_penaly_elbow_lock_PA <- problem(pu, features, cost_colum = "cost", rij = rij) %>% 
+  add_min_set_objective() %>% 
+  add_locked_in_constraints(locked_in = "locked_in_pa") %>%
+  add_relative_targets(0.3) %>% 
+  add_binary_decisions()
+
+# Solve the problem
+s_30_penaly_elbow_lock_PA <- p_30_penaly_elbow_lock_PA %>%
+  add_default_solver(gap = 0.05) %>%
+  add_connectivity_penalties(penalty = con_penal_30, data = conn_data) %>%
+  solve()
+
+# Export results
+export_sol(s_30_penaly_elbow_lock_PA, subcatchments, importance = NULL,
+           paste0(outputpath,"s_30_penaly_elbow_lock_PA2.gpkg"))
+
+# Calculate total cost and connectivity of the solution
+total_cost_lock_PA <- eval_cost_summary(p_30_penaly_elbow_lock_PA,
+                                        s_30_penaly_elbow_lock_PA["solution_1"]) %>%
+  pull(cost)
+
+total_conn_lock_PA <- eval_connectivity_summary(p_30_penaly_elbow_lock_PA,
+                                                s_30_penaly_elbow_lock_PA["solution_1"],
+                                                data = conn_data) %>%
+  pull(connectivity)
+
+# Save cost and connectivity
+write.csv(data.frame(total_cost_lock_PA, total_conn_lock_PA),
+          row.names = FALSE, 
+          paste0(outputpath, "cost_conn_30_elbow_lock_PA.csv"))
+
+# Feature representation in protected areas and the solution
+repr_30_penaly_elbow_lock_PA <- target_coverage(problem = p_30_penaly_elbow_lock_PA,
+                                                solution = s_30_penaly_elbow_lock_PA, 
+                                                pa_colname = "locked_in_pa")
+
+# Save feature representation
+write.csv(repr_30_penaly_elbow_lock_PA$representation, 
+          row.names = FALSE, 
+          paste0(outputpath, "repr_sol_30_elbow_lock_PA.csv"))
+
+# Planning units importance
+# Calculate irreplaceability of planning units
+irr_30_penaly_elbow_lock_PA <- eval_ferrier_importance(p_30_penaly_elbow_lock_PA, 
+                                                       s_30_penaly_elbow_lock_PA["solution_1"])
+
+irr_30_penaly_elbow_lock_PA$id <- pu$id
+
+# Save irreplaceability
+write.csv(irr_30_penaly_elbow_lock_PA,
+          row.names = F, 
+          paste0(outputpath, "irr_30_penaly_elbow_lock_PA.csv"))
+
+# Map with irreplaceability
+sf_irr_30_penaly_elbow_lock_PA <- subcatchments %>%
+  inner_join(irr_30_penaly_elbow_lock_PA, by = c("id" = "id"))
+
+st_write(sf_irr_30_penaly_elbow_lock_PA, 
+         paste0(outputpath, "irr_30_penaly_elbow_lock_PA.gpkg"))
+
