@@ -22,13 +22,36 @@ The repository includes the following scripts:
 - `conserv_prior_cuba.Rproj` - R project file for managing the analysis environment.
 
 ## Input data
-Input data for scripts can be downloaded from 
+Input data to run the models and spatial conservation prioritization analyses can be downloaded from 
+and are orginized as follows:
+
+```
+├── data.zip/
+│   ├── subc_habit_clasif.gpkg
+│   ├── sdm/
+│      ├── input/
+│         ├── occurr/
+│         ├── pred_sites/
+│         ├── ssn/
+│            ├── ssn_obj.zip 
+│            ├── CorMdls.RData
+│      ├── output/
+│         ├── ensemble/
+│         ├── indep_models/
+│   ├── conservation_prioritization/
+│      ├── input/
+│         ├── feature.csv
+│         ├── longitudinal_distance.csv
+│         ├── pu.csv
+│      ├── output
+
+Output folders store SDM and spatial conservation prioritization results.
 
 ## Usage
 To reproduce the analyses:
 1. Clone this repository:
    ```sh
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/ytorres-cambas/prioritization-freshwater-cuba
    ```
 2. Open the R project file (`conserv_prior_cuba.Rproj`).
 3. Run the scripts sequentially according to the workflow.
