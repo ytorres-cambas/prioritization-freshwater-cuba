@@ -47,6 +47,8 @@ and are orginized as follows:
 
 Output folders store SDM and spatial conservation prioritization results.
 
+```
+
 ## Usage
 To reproduce the analyses:
 1. Clone this repository:
