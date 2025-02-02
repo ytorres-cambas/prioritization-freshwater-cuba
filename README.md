@@ -72,11 +72,11 @@ Output folders store SDM and spatial conservation prioritization results.
 
 ### Data Description
 
-subc_habit_clasif.gpkg: GeoPackage file with spatial units used for the analysis.
+- subc_habit_clasif.gpkg: GeoPackage file with spatial units used for the analysis.
 
-occurr: Contains 230 folders, one for each species. Folder names are in the format genus_species. Files in each folder:
+- occurr: Contains 230 folders, one for each species. Folder names are in the format genus_species. Files in each folder:
 
-calib.csv: Table with 10 columns, each containing IDs of spatial units used to train models following a ten-fold repeated split-sampling strategy.
+- calib.csv: Table with 10 columns, each containing IDs of spatial units used to train models following a ten-fold repeated split-sampling strategy.
 
 eval.csv: Same format as calib.csv, but used for model evaluation.
 
