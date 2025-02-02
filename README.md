@@ -72,55 +72,55 @@ Output folders store SDM and spatial conservation prioritization results.
 
 ### Data Description
 
-    subc_habit_clasif.gpkg: GeoPackage file with spatial units used for the analysis.
+subc_habit_clasif.gpkg: GeoPackage file with spatial units used for the analysis.
 
-    occurr: Contains 230 folders, one for each species. Folder names are in the format genus_species. Files in each folder:
+occurr: Contains 230 folders, one for each species. Folder names are in the format genus_species. Files in each folder:
 
-        calib.csv: Table with 10 columns, each containing IDs of spatial units used to train models following a ten-fold repeated split-sampling strategy.
+calib.csv: Table with 10 columns, each containing IDs of spatial units used to train models following a ten-fold repeated split-sampling strategy.
 
-        eval.csv: Same format as calib.csv, but used for model evaluation.
+eval.csv: Same format as calib.csv, but used for model evaluation.
 
-        occurr.csv: Table with 20 columns, including:
+occurr.csv: Table with 20 columns, including:
 
-            Column 1 (stream): Spatial unit IDs.
+   Column 1 (stream): Spatial unit IDs.
 
-            Columns 2-11 (PC1-PC10): Principal components from Principal Component Analysis (PCA).
+Columns 2-11 (PC1-PC10): Principal components from Principal Component Analysis (PCA).
 
-            Columns 12-13 (z_d_roads, z_d_town): Distance to road and distance to town from the midpoint of each stream segment.
+Columns 12-13 (z_d_roads, z_d_town): Distance to road and distance to town from the midpoint of each stream segment.
 
-            Column 14 (pres_abs): Presence-absence data.
+Column 14 (pres_abs): Presence-absence data.
 
-            Columns 15-20: Taxonomic information (species, family, order, class, phylum, kingdom).
+Columns 15-20: Taxonomic information (species, family, order, class, phylum, kingdom).
 
-    pred_sites.csv: Table with predictor values (10 components from PCA) for each spatial unit in the study area used for predictions. Columns:
+pred_sites.csv: Table with predictor values (10 components from PCA) for each spatial unit in the study area used for predictions. Columns:
 
-        Columns 1-10: PC1 to PC10 – Principal components from Principal Component Analysis (PCA).
+Columns 1-10: PC1 to PC10 – Principal components from Principal Component Analysis (PCA).
 
-        Columns 12-13: z_d_roads, z_d_town – Distance to road and distance to town from the midpoint of each spatial unit.
+Columns 12-13: z_d_roads, z_d_town – Distance to road and distance to town from the midpoint of each spatial unit.
 
-    ssn_obj.zip: Files to create an SSN (Spatial Stream Network) object for each species. This object is an R object required as input to run a Spatial Stream Network model.
+ssn_obj.zip: Files to create an SSN (Spatial Stream Network) object for each species. This object is an R object required as input to run a Spatial Stream Network model.
 
-    CorMdls.RData: R object containing a list of spatial autocorrelation models.
+CorMdls.RData: R object containing a list of spatial autocorrelation models.
 
-    feature.csv: Table with two columns:
+feature.csv: Table with two columns:
 
-        id_feature: A unique identification number for each feature (species) in the spatial conservation prioritization analysis.
+id_feature: A unique identification number for each feature (species) in the spatial conservation prioritization analysis.
 
-        name: Species names in the format genus_species.
+name: Species names in the format genus_species.
 
-    longitudinal_distance.csv: Table with longitudinal distances between stream segments within the same river basin. Columns:
+longitudinal_distance.csv: Table with longitudinal distances between stream segments within the same river basin. Columns:
 
-        id1 and id2: Unique IDs for each stream segment.
+id1 and id2: Unique IDs for each stream segment.
 
-        dist_km and dist_km_inv: Distance and inverse distance between id1 and id2, expressed in kilometers.
+dist_km and dist_km_inv: Distance and inverse distance between id1 and id2, expressed in kilometers.
 
-    pu.csv: Table with information about each planning unit. Columns:
+pu.csv: Table with information about each planning unit. Columns:
 
-        id: Unique ID for each planning unit.
+id: Unique ID for each planning unit.
 
-        cost: Value of the Human Footprint Index.
+cost: Value of the Human Footprint Index.
 
-        locked_in_pa: TRUE if a planning unit is located in a protected area, otherwise FALSE.
+locked_in_pa: TRUE if a planning unit is located in a protected area, otherwise FALSE.
 
 
 
