@@ -9,43 +9,8 @@ The main objectives of this work are:
 
 - Conservation Planning Under Post-2020 Global Biodiversity Framework: Develop solutions that align with the 30% conservation target for freshwater species, ensuring connectivity.
 
-## Code
-The repository includes the following scripts:
-
-- `BRT.R` - Boosted Regression Trees (BRT) for species distribution modeling.
-- `MAXENT.R` - Maximum Entropy (MaxEnt) modeling for SDMs.
-- `RF.R` - Random Forest (RF) modeling for SDMs.
-- `SSN.R` - Spatial Stream Network analysis for freshwater ecosystems.
-- `ENSEMBLE.R` - Ensemble modeling approach for SDMs.
-- `scr_cons_plann.R` - Main script for conservation planning analysis.
-- `scr_functions.R` - Utility functions for SDMs and conservation planning.
-- `conserv_prior_cuba.Rproj` - R project file for managing the analysis environment.
-
-## Instructions to run the analysis 
-### Download input data
-
-1. Download dataset data.zip.
-2. Unzip data.zip and ensure that unziped folder is in the same folder as the R project file `conserv_prior_cuba.Rproj`.
-3. Unzip ssn_obj.zip .
-
-### Run the SDMs
-
-1. Open `conserv_prior_cuba.Rproj` in RStudio.
-2. Open the scripts to run the SDMs (`BRT.R`, `MAXENT.R`, `RF.R`, `SSN.R`). 
-Please note that running all models for all species in the dataset can take a significant amount of 
-time (e.g., approximately one week on a computer with 32 GB RAM and 16 cores), especially the SSN model.
-3. Run `ENSEMBLE.R` after the last modeling algorith has ended.
-
-### Run the spatial conservation prioritization analysis
-
-1. Run `scr_mk_input_cons_plann.R`
-2. Run `scr_cons_plann_30.R`
-2. Run `scr_cons_plann_17.R`
-
 ## Data 
-
 Input data to run the models and spatial conservation prioritization analyses are orginized as follows:
-
 ```
 ├── data.zip/
 │   ├── subc_habit_clasif.gpkg
@@ -65,8 +30,6 @@ Input data to run the models and spatial conservation prioritization analyses ar
 │         ├── longitudinal_distance.csv
 │         ├── pu.csv
 │      ├── output
-
-Output folders store SDM and spatial conservation prioritization results.
 
 ```
 
@@ -97,6 +60,35 @@ Output folders store SDM and spatial conservation prioritization results.
    id: Unique ID for each planning unit.
    cost: Value of the Human Footprint Index.
    locked_in_pa: TRUE if a planning unit is located in a protected area, otherwise FALSE.
+
+## Code
+The repository includes the following scripts:
+
+- `BRT.R` - Boosted Regression Trees (BRT) for species distribution modeling.
+- `MAXENT.R` - Maximum Entropy (MaxEnt) modeling for SDMs.
+- `RF.R` - Random Forest (RF) modeling for SDMs.
+- `SSN.R` - Spatial Stream Network analysis for freshwater ecosystems.
+- `ENSEMBLE.R` - Ensemble modeling approach for SDMs.
+- `scr_cons_plann.R` - Main script for conservation planning analysis.
+- `scr_functions.R` - Utility functions for SDMs and conservation planning.
+- `conserv_prior_cuba.Rproj` - R project file for managing the analysis environment.
+
+## Instructions to run the analysis 
+### Download input data
+
+1. Download dataset data.zip.
+2. Unzip data.zip and ensure that unziped folder is in the same folder as the R project file `conserv_prior_cuba.Rproj`.
+3. Unzip ssn_obj.zip .
+
+### Run the analysis
+
+1. Open `conserv_prior_cuba.Rproj` in RStudio.
+2. Open the scripts to run the SDMs (`BRT.R`, `MAXENT.R`, `RF.R`, `SSN.R`). 
+Please note that running all models for all species in the dataset can take a significant amount of 
+time (e.g., approximately one week on a computer with 32 GB RAM and 16 cores), especially the SSN model.
+3. Run `ENSEMBLE.R` after the last modeling algorith has ended.
+4. Run `scr_cons_plann.R`
+
 
 
 
