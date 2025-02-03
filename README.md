@@ -40,26 +40,26 @@ Input data to run the models and spatial conservation prioritization analyses ar
 - calib.csv: Table with 10 columns, each containing IDs of spatial units used to train models following a ten-fold repeated split-sampling strategy.
 - eval.csv: Same format as calib.csv, but used for model evaluation.
 - occurr.csv: Table with 20 columns, including:
-   Column 1 (stream): Spatial unit IDs.
-   Columns 2-11 (PC1-PC10): Principal components from Principal Component Analysis (PCA).
-   Columns 12-13 (z_d_roads, z_d_town): Distance to road and distance to town from the midpoint of each stream segment.
-   Column 14 (pres_abs): Presence-absence data.
-   Columns 15-20: Taxonomic information (species, family, order, class, phylum, kingdom).
+   - Column 1 (stream): Spatial unit IDs.
+   - Columns 2-11 (PC1-PC10): Principal components from Principal Component Analysis (PCA).
+   - Columns 12-13 (z_d_roads, z_d_town): Distance to road and distance to town from the midpoint of each stream segment.
+   - Column 14 (pres_abs): Presence-absence data.
+   - Columns 15-20: Taxonomic information (species, family, order, class, phylum, kingdom).
 - pred_sites.csv: Table with predictor values (10 components from PCA) for each spatial unit in the study area used for predictions. Columns:
-   Columns 1-10: PC1 to PC10 – Principal components from Principal Component Analysis (PCA).
-   Columns 12-13: z_d_roads, z_d_town – Distance to road and distance to town from the midpoint of each spatial unit.
+   - Columns 1-10: PC1 to PC10 – Principal components from Principal Component Analysis (PCA).
+   - Columns 12-13: z_d_roads, z_d_town – Distance to road and distance to town from the midpoint of each spatial unit.
 - ssn_obj.zip: Files to create an SSN (Spatial Stream Network) object for each species. This object is an R object required as input to run a Spatial Stream Network model.
 - CorMdls.RData: R object containing a list of spatial autocorrelation models.
 - feature.csv: Table with two columns:
-   id_feature: A unique identification number for each feature (species) in the spatial conservation prioritization analysis.
-   name: Species names in the format genus_species.
+   - id_feature: A unique identification number for each feature (species) in the spatial conservation prioritization analysis.
+   - name: Species names in the format genus_species.
 - longitudinal_distance.csv: Table with longitudinal distances between stream segments within the same river basin. Columns:
-   id1 and id2: Unique IDs for each stream segment.
-   dist_km and dist_km_inv: Distance and inverse distance between id1 and id2, expressed in kilometers.
+   - id1 and id2: Unique IDs for each stream segment.
+   - dist_km and dist_km_inv: Distance and inverse distance between id1 and id2, expressed in kilometers.
 - pu.csv: Table with information about each planning unit. Columns:
-   id: Unique ID for each planning unit.
-   cost: Value of the Human Footprint Index.
-   locked_in_pa: TRUE if a planning unit is located in a protected area, otherwise FALSE.
+   - id: Unique ID for each planning unit.
+   - cost: Value of the Human Footprint Index.
+   - locked_in_pa: TRUE if a planning unit is located in a protected area, otherwise FALSE.
 
 ## Code
 The repository includes the following scripts:
