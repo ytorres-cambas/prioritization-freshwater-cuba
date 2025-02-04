@@ -29,6 +29,7 @@ Input data to run the models and spatial conservation prioritization analyses ar
 │         ├── feature.csv
 │         ├── longitudinal_distance.csv
 │         ├── pu.csv
+│         ├── rij.csv
 │      ├── output
 
 ```
@@ -60,6 +61,10 @@ Input data to run the models and spatial conservation prioritization analyses ar
    - id: Unique ID for each planning unit.
    - cost: Value of the Human Footprint Index.
    - locked_in_pa: TRUE if a planning unit is located in a protected area, otherwise FALSE.
+- rij.csv: Table with three columns that contains information on the amount of each feature in each planning unit. Columns:
+   - pu: Unique ID for each planning unit.
+   - species: Unique identification number for each species (i.e. id_feature).
+   - amount: 
 
 ## Code
 The repository includes the following scripts:
